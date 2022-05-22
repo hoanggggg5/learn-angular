@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Dame</th>
+      <th>Defend</th>
+      <th>Speed</th>
+      <th>Price</th>
+      <th>Avatar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let champ of champs">
+      <td class="color-blue">
+        <app-champ [champName]="champ.name"></app-champ>
+      </td>
+      <td>{{champ.dame}}</td>
+      <td>{{champ.defend}}</td>
+      <td>{{champ.speed}}</td>
+      <app-table-price [price]="champ.price"></app-table-price>
+      <td>
+        <!-- Dame > 500 red < 500 yellow, price > 3100 yellow -->
+        <app-table-avatar [price]="champ.price" [src]="champ.avatar"></app-table-avatar>
+      </td>
+    </tr>
+  </tbody>
+</table>

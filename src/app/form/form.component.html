@@ -1,0 +1,72 @@
+<!-- userForm là 1 thể hiện của ngForm
+và sẽ quản lý, lắng nghe thay đổi của form nó đặt vào -->
+<!-- <p>{{userForm.valid | json}}</p> -->
+<p>{{inputValues | json}}</p>
+<form action="" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+  <div class="form-group">
+    <input
+      type="hidden"
+      class="form-control"
+      name="id"
+      [(ngModel)]="inputValues.id"
+      required minlength="5" maxlength="32"
+      #name="ngModel"
+    >
+  </div>
+  <div class="form-group">
+    <label for="">Tên user</label>
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      [(ngModel)]="inputValues.name"
+      required minlength="5" maxlength="32"
+      #name="ngModel"
+    >
+    <!-- <span>{{name.errors | json}}</span> -->
+    <app-show-validate [field]="name" key="Tên"></app-show-validate>
+  </div>
+  <div class="form-group">
+    <label for="">Tuổi user</label>
+    <input
+      type="number"
+      class="form-control"
+      name="age"
+      [(ngModel)]="inputValues.age"
+      required min="1" max="100"
+      #age="ngModel"
+    >
+    <app-show-validate [field]="age" key="Tuổi"></app-show-validate>
+  </div>
+  <div>
+    <button
+      class="btn btn-success"
+      [disabled]="!userForm.valid"
+    >Submit</button>
+  </div>
+</form>
+
+<div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Tuổi</th>
+        <th>Email</th>
+        <th>SĐT</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users" (click)="onEdit(user.id, user.name, user.age)">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.age}}</td>
+        <td>-</td>
+        <td>-</td>
+        <td><button (click)="onDelete(user.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
