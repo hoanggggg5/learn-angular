@@ -1,0 +1,66 @@
+<div>
+  <div>
+   <h2 className="my-6 text-2xl w-full font-semibold text-gray-700 dark:text-gray-200">
+     Add products
+   </h2>
+ 
+   <div class="py-[20px] flex flex-col">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+        <div class="grid grid-cols-3 gap-6">
+          <div class="col-span-3 sm:col-span-3">
+            <label class="block text-sm font-medium text-gray-700">Name</label>
+            <input type="text" formControlName="name" placeholder=""  class="py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"/>
+          </div>
+          <app-show-validate
+            [field]="productForm.get('name')"
+            key="Tên sản phẩm"
+          ></app-show-validate>
+        </div>
+        <div class="grid grid-cols-3 gap-6">
+          <div class="col-span-3 sm:col-span-3">
+            <label class="block text-sm font-medium text-gray-700">Category id</label>
+            <input type="text" formControlName="category" placeholder=""  class="py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"/>
+          </div>
+          <app-show-validate
+            [field]="productForm.get('category')"
+            key="Category id"
+          ></app-show-validate>
+        </div>
+        <div class="grid grid-cols-3 gap-6">
+          <div class="col-span-3 sm:col-span-3">
+            <label class="block text-sm font-medium text-gray-700">Price</label>
+            <input type="number" formControlName="price" class="py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"/>
+          </div>
+          <app-show-validate
+            [field]="productForm.get('price')"
+            key="Price"
+          ></app-show-validate>
+        </div>
+        <div class="grid grid-cols-3 gap-6">
+          <div class="col-span-3 sm:col-span-3">
+            <label class="block text-sm font-medium text-gray-700">Desc</label>
+            <input type="text"  formControlName="desc" class="py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"/>
+          </div>
+          <app-show-validate
+          [field]="productForm.get('desc')"
+          key="Desc"
+        ></app-show-validate>
+        </div>
+        <div class="grid grid-cols-3 gap-6">
+          <div class="col-span-3 sm:col-span-3">
+            <label class="block text-sm font-medium text-gray-700">Image</label>
+            <input type="text"  formControlName="img" class="py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"/>
+          </div>
+          <app-show-validate
+          [field]="productForm.get('img')"
+          key="img"
+        ></app-show-validate>
+        </div>
+        <button type="submit" [disabled]="!productForm.valid" class="w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-purple">
+          Add
+        </button>
+      </div>
+    </form>
+   </div>
+ </div>
