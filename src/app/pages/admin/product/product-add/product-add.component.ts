@@ -38,23 +38,22 @@ export class ProductAddComponent implements OnInit {
   }
 
   onSubmit() {
-    // 1. Lấy dữ liệu từ form
     const submitData = this.productForm.value;
     console.log(submitData);
 
     try {
       this.productService.addProduct(submitData).subscribe((data) => {
-        console.log(data); 
+        this.router.navigateByUrl('/admin/products');
       })
     } catch (error) {
       return error
     }
 
-    this.showSuccess()
+    // this.showSuccess()
   }
 
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-  }
+  // showSuccess() {
+  //   this.toastr.success('Hello world!', 'Toastr fun!');
+  // }
 
 }

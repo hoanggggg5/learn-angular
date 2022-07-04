@@ -13,9 +13,9 @@
             <span class="mr-3 w-[100px] items-center flex">Quantity</span>
             <div class="title-font font-medium text-2xl text-gray-900">
               <div class="flex justify-center ">
-                <svg id="down-quantity" class="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" /></svg>
-                <input id="quantity" value="1" class="mx-2 border text-center w-8" type="text"/>
-                <svg id="up-quantity" class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                <svg (click)="subCount()" id="down-quantity" class="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" /></svg>
+                <input id="quantity" value={{count}} class="mx-2 border text-center w-8" type="text"/>
+                <svg (click)="addCount()" id="up-quantity" class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
                   <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                 </svg>
               </div>
@@ -23,9 +23,9 @@
           </div>
           <div class="flex mt-6 pb-5 mb-5">
             <span class="mr-3 w-[100px] flex items-center">Price</span>
-            <span class="title-font font-medium text-2xl text-gray-900 pr-10 pl-3">100000</span>
+            <span class="title-font font-medium text-2xl text-gray-900 pr-10 pl-3">{{100000 * count}}</span>
           </div>
-          <button class="flex mt-10 text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">Add cart</button>
+          <button (click)="addCart()" class="flex mt-10 text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">Add cart</button>
         </div>
       </div>
     </div>

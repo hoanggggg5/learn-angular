@@ -39,6 +39,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CategoryAddComponent } from './pages/admin/category/category-add/category-add.component';
+import { CategoryEditComponent } from './pages/admin/category/category-edit/category-edit.component';
+import { CategoryManagerComponent } from './pages/admin/category/category-manager/category-manager.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +67,9 @@ import { ToastrModule } from 'ngx-toastr';
     NavbarTopComponent,
     ProductAddComponent,
     ProductEditComponent,
+    CategoryAddComponent,
+    CategoryEditComponent,
+    CategoryManagerComponent,
 
   ],
 

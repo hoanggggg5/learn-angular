@@ -25,12 +25,12 @@
               </button>
             </form>
             
-            <!-- <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-              <div id="account-email" class="text-sm font-medium text-white">email</div>
+            <div *ngIf="isLogged" class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+              <div id="account-email" class="text-sm font-medium text-white">{{user.user.email}}</div>
               <span class="h-6 w-px bg-gray-200" aria-hidden="true" ></span>
-              <div class="text-sm font-medium text-white">Logout</div>
-            </div>  -->
-            <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+              <div (click)="logout()" class="text-sm font-medium text-white">Logout</div>
+            </div> 
+            <div *ngIf="!isLogged" class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
               <a routerLink="/login" class="text-sm font-medium text-white">Sign in</a>
               <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
               <a routerLink="/register" class="text-sm font-medium text-white">Create account</a>
@@ -41,7 +41,7 @@
                 <svg class="text-white flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
-                <span class="count-cart ml-2 text-sm font-medium text-white">0</span>
+                <span class="count-cart ml-2 text-sm font-medium text-white">{{countProductCart}}</span>
                 <span class="sr-only">items in cart, view bag</span>
               </a>
             </div>
@@ -51,9 +51,6 @@
     </nav>
   </header>
   <div class="bg-white h-[30px] flex px-14">
-    <div data-id="Smart phone" class="nav-product py-1 text-[#212121] pr-8 hover:text-[#2874f0]">Book 1</div>
-    <div data-id="Tablet" class="nav-product py-1 text-[#212121] pr-8 hover:text-[#2874f0]">Book 2</div>
-    <div data-id="Watch" class="nav-product py-1 text-[#212121] pr-8 hover:text-[#2874f0]" >Book 3</div>
-    <div data-id="Accessory" class="nav-product py-1 text-[#212121] pr-8 hover:text-[#2874f0]">Book 4</div>
+    <div *ngFor="let category of categories"  data-id="Smart phone" class="nav-product py-1 text-[#212121] pr-8 hover:text-[#2874f0]">{{category.category}}</div>
   </div>
 </div> 

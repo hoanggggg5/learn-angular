@@ -52,6 +52,7 @@ export class ProductEditComponent implements OnInit {
       console.log(data);
       this.productForm.patchValue({
         name: data.name,
+        category: data.category,
         price: data.price,
         desc: data.desc,
         img: data.img,
@@ -61,7 +62,6 @@ export class ProductEditComponent implements OnInit {
 
   onSubmit() {
     const submitData = this.productForm.value;
-    console.log(submitData);
 
     try {
       this.productService.updateProduct(this.id, submitData).subscribe((data) => {

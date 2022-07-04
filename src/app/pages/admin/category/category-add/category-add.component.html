@@ -1,0 +1,26 @@
+<div>
+  <div>
+   <h2 className="my-6 text-2xl w-full font-semibold text-gray-700 dark:text-gray-200">
+     Add products
+   </h2>
+ 
+   <div class="py-[20px] flex flex-col">
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+      <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+        <div class="grid grid-cols-3 gap-6">
+          <div class="col-span-3 sm:col-span-3">
+            <label class="block text-sm font-medium text-gray-700">Category</label>
+            <input type="text" formControlName="category" placeholder=""  class="py-2 px-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"/>
+          </div>
+          <app-show-validate
+            [field]="categoryForm.get('category')"
+            key="Category"
+          ></app-show-validate>
+        </div>
+        <button type="submit" [disabled]="!categoryForm.valid" class="w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-purple">
+          Add
+        </button>
+      </div>
+    </form>
+   </div>
+ </div>

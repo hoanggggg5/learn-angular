@@ -12,6 +12,7 @@ export class ProductDetailComponent implements OnInit {
 
   productId: string;
   product: Product;
+  count: number;
 
   constructor(
     private productService: ProductService, // cung cấp createProduct
@@ -19,6 +20,7 @@ export class ProductDetailComponent implements OnInit {
   ) {
     this.product = {} as Product
     this.productId = '';
+    this.count = 1
   }
 
   ngOnInit(): void {
@@ -30,4 +32,30 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  subCount() {
+    this.count -= 1
+  }
+
+  addCount() {
+    this.count += 1
+  }
+
+  addCart() {
+    const newProduct = {
+      ...this.product,
+      quantity: this.count,
+    };
+    let cartProduct: any = JSON.parse(localStorage.getItem("cart") as string);
+    if (!cartProduct) cartProduct = [];
+    const existProduct = cartProduct.find((product: Product) => product._id == this.productId);
+    if (!existProduct) {
+      cartProduct.push(newProduct);
+    } else {
+      existProduct.quantity = this.count;
+    }
+
+    console.log("áaaaa", cartProduct);
+    localStorage.setItem("cart", JSON.stringify(cartProduct));
+    alert("Add product successfully");
+  }
 }

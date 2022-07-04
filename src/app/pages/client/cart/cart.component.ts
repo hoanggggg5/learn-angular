@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/types/product';
 
 @Component({
   selector: 'app-cart',
@@ -7,9 +8,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  products: any;
+  count: number;
+  total: number;
 
-  ngOnInit(): void {
+  constructor() {
+    this.products = []
+    this.count = 1
+    this.total = 0
   }
 
+  ngOnInit(): void {
+    this.products = JSON.parse(localStorage.getItem("cart") as string);
+    this.total = this.products.reduce((previousValue: number, product: Product) => 
+      product.quantity ? (previousValue + (product.price * product.quantity)) : (previousValue + product.price)
+    , 0)
+    console.log(this.total)
+  }
+
+  subCount() {
+    this.count -= 1
+  }
+
+  addCount() {
+    this.count += 1
+  }
+
+  deleteCart(id: string) {
+    const findIndexProduct = this.products.findIndex(
+      (product: any) => product.id == id,
+    );
+    this.products.splice(findIndexProduct, 1);
+    localStorage.setItem("cart", JSON.stringify(this.products));
+  }
 }
